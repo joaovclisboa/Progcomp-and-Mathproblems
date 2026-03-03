@@ -1,12 +1,10 @@
-Algoritmos 2
+#  DCC207 - Algoritmos 2
 
-**Semestre:** 2025/2 | **Turma:** TN
-
-**Professor:** Renato Vimieiro
+**Semestre:** 2025/2 | **Turma:** TN  
+**Professor:** Renato Vimieiro  
 
 ##  Sobre a Disciplina
-
-Este repositório contém materiais, anotações e trabalhos da disciplina **Algoritmos 2**.
+Este repositório contém materiais, anotações e trabalhos da disciplina **Algoritmos 2**. 
 
 Ao final do curso, espera-se o domínio de algoritmos fundamentais para representação e realização eficientes de operações em **sequências** e em **dados geométricos**. Além disso, a disciplina capacita para o desenvolvimento e análise formal de algoritmos, abordando os limites teóricos do que pode ser resolvido eficientemente pelo computador através da **Teoria de Complexidade de Algoritmos**.
 
@@ -15,7 +13,7 @@ Ao final do curso, espera-se o domínio de algoritmos fundamentais para represen
 ##  Cronograma de Aulas
 
 | Aula | Data | Tópico Abordado |
-| --- | --- | --- |
+| :---: | :---: | :--- |
 | 1 | 03/03/2026 | Apresentação do curso |
 | 2 a 6 | 05/03 a 19/03 | Algoritmos para manipulação de sequências |
 | 7 a 12 | 24/03 a 09/04 | Algoritmos geométricos |
@@ -35,7 +33,7 @@ Ao final do curso, espera-se o domínio de algoritmos fundamentais para represen
 ##  Avaliações e Pontuação
 
 | Avaliação | Pontos | Data Prevista |
-| --- | --- | --- |
+| :--- | :---: | :---: |
 | **Prova 1** | 25 | 14/04/2026 |
 | **Prova 2** | 25 | 11/06/2026 |
 | **Trabalho Teórico** | 15 | 05/05/2026 *(a confirmar)* |
@@ -47,7 +45,6 @@ Ao final do curso, espera-se o domínio de algoritmos fundamentais para represen
 ---
 
 ##  Material de Apoio
-
 * O suporte oficial da disciplina ocorre via **Moodle**.
 * Os materiais (slides, listas, especificações) são postados diretamente no Moodle ou através de links externos em pastas do **OneDrive** (com suporte da UFMG).
 
@@ -56,7 +53,6 @@ Ao final do curso, espera-se o domínio de algoritmos fundamentais para represen
 ##  Bibliografia Recomendada
 
 ### Principal e Algoritmos Gerais
-
 * **Cormen, T. H. et al.** *Algoritmos: teoria e prática* (Editora Campus) / *Introduction to Algorithms* (3rd Ed., MIT Press).
 * **Kleinberg, J. & Tardos, E.** *Algorithm Design* (Pearson Education, 2006).
 * **Manber, U.** *Introduction to algorithms: a creative approach* (Addison-Wesley, 1989).
@@ -65,10 +61,8 @@ Ao final do curso, espera-se o domínio de algoritmos fundamentais para represen
 * **Goodrich, M. T. & Tamassia, R.** *Algorithms Design and Applications* (Wiley).
 
 ### Geometria Computacional
-
 * **O’Rourke, J.** *Computational Geometry in C* (2nd Ed., Cambridge University Press).
 * **de Berg, M. et al.** *Computational Geometry: Algorithms and Applications* (3rd Ed., Springer).
 
 ### Teoria da Computação
-
 * **Sipser, M.** *Introduction to the Theory of Computation* (3rd Ed., Cengage Learning).
