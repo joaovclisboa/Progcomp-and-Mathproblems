@@ -3,7 +3,7 @@
 **Instituição:** Universidade Federal de Minas Gerais (UFMG) - ICEx / Depto. de Matemática  
 **Semestre:** 2026/1 | **Turma:** TN1  
 **Professor:** Bhalchandra Digambar Thatte  
-**Carga Horária:** 120 horas (08 créditos) | **Pré-requisito:** MAT-002  
+**Carga Horária:** 90 | **Pré-requisito:** MAT-002  
 **Horário das Aulas:** Segundas, Quartas e Sextas, de 14:55 às 16:35  
 
 ##  Sobre a Disciplina
