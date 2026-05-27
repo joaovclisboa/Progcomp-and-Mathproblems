@@ -1,24 +1,53 @@
 import string
 
-def naive_string_matcher(padrao, texto) -> string:
+
+# ==========================================================
+# 1. FORÇA BRUTA (NAIVE STRING MATCHER)
+# ==========================================================
+def naive_string_matcher(padrao, texto):
     n = len(texto)
     m = len(padrao)
-    for i in range(n-m):
+    ocorrencias = []
+    for i in range(n-m+1):
         for j in range(m):
-                if (padrao[j] == texto[i]):
+                if (padrao[j] == texto[i+j]):
                      continue
                 else:
-                     break
 
-def FASA(padrao, texto) -> list[int]: #Finite Automaton String-Matching Algorithm
-     return [1, 2, 3]
-def CPF(padrao) -> list[int]: #compute prefix function
-     return[1, 2, 3]
+    return ocorrencias
 
+# ==========================================================
+# 2. RABIN-KARP
+# ==========================================================
+def rabin_karp(padrao, texto, d=256, q=101) -> list[int]:
+    """
+    d: número de caracteres no alfabeto
+    q: um número primo para calcular o hash
+    """
+    ocorrencias = []
+    # a implementar
+    return ocorrencias
+
+# ==========================================================
+# 3. AUTÔMATO FINITO (FASA)
+# ==========================================================
+def compute_transition_function(padrao) -> dict:
+     # a implementar
+     pass
+
+def FASA(padrao, texto) -> list[int]: 
+     """Finite Automaton String-Matching Algorithm"""
+     ocorrencias = []
+     # a implementar
+     return ocorrencias
+
+# ==========================================================
+# 4. KNUTH-MORRIS-PRATT (KMP)
+# ==========================================================
 def prefixFunc(padrao) -> list[int]:
      prefix = [0] * len(padrao)
      if (len(padrao) < 3):
-          return
+          return prefix # alterado para retornar prefix em vez de vazio
      j = 0
      for i in range(2, len(padrao)):
           if (padrao[i] == padrao[j]):
@@ -31,15 +60,61 @@ def prefixFunc(padrao) -> list[int]:
                     j += 1
      return prefix
 
+def KMP(padrao, texto) -> list[int]: 
+     """Knuth-Morris-Pratt (KMP) Algorithm"""
+     ocorrencias = []
+     # a implementar (lembre-se de chamar prefixFunc)
+     return ocorrencias
 
-     return [1,2,3]
-def KMP(padrao, texto) -> list[int]: #Knuth-Morris-Pratt
-     return [1, 2, 3]
+# ==========================================================
+# 5. BOYER-MOORE-HORSPOOL
+# ==========================================================
+def shift_table_horspool(padrao) -> dict:
+    """Pré-processamento da tabela de saltos (Shift Table) do Horspool"""
+    # a implementar
+    pass
 
+def boyer_moore_horspool(padrao, texto) -> list[int]:
+    """Algoritmo de Horspool para busca de substring"""
+    ocorrencias = []
+    # a implementar
+    return ocorrencias
 
+# ==========================================================
+# 6. TRIE / AHO-CORASICK (MÚLTIPLOS PADRÕES)
+# ==========================================================
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.is_end_of_word = False
+        # Para Aho-Corasick, você pode adicionar 'fail_link' ou 'output_link'
+        
+class Trie:
+    def __init__(self):
+        self.root = TrieNode()
+
+    def insert(self, word: str):
+        # a implementar
+        pass
+
+    def search(self, word: str) -> bool:
+        # a implementar
+        pass
+
+def trie_string_match(padroes: list[str], texto: str) -> dict:
+    """Busca de multipadrões em texto usando Trie (ou Aho-Corasick)"""
+    # a implementar
+    pass
+
+# ==========================================================
+# ÁREA DE TESTES
+# ==========================================================
 def main():
     texto = "ababbabbabbababbabb"
-    print(prefixFunc(texto))
+    padrao = "abb"
+    
+    print("Teste Prefix Function (KMP) em 'ababbabb':", prefixFunc("ababbabb"))
+    print("Naive String Matcher:", naive_string_matcher(padrao, texto))
 
 
 if __name__ == "__main__":
