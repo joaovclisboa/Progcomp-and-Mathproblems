@@ -16,9 +16,25 @@ def produto_vetorial(p0, p1, p2):
 def organizar_pontos(pontos):
     p0 = min(pontos, key= lambda p:(p[1], p[0]))
     pontos_restantes = [p for p in pontos if p != p0]
-    for ponto in pontos_restantes:
-        ponto.append()
-    # a implementar
+    pontos_restantes.sort(key = lambda p:(math.atan2(p[1] - p0[1], p[0] - p0[0]), math.dist(p0, p)))
+    pontos_restantes_final = []
+    
+    if len(pontos_restantes) > 0:
+        pontos_restantes_final.append(pontos_restantes[0])
+        
+    for i in range(1, len(pontos_restantes)):
+        ang_atual = math.atan2(pontos_restantes[i][1] - p0[1], pontos_restantes[i][0] - p0[0])
+        ang_anterior = math.atan2(pontos_restantes[i-1][1] - p0[1], pontos_restantes[i-1][0] - p0[0])
+        
+        if ang_atual != ang_anterior:
+            pontos_restantes_final.append(pontos_restantes[i])
+        else:
+            pontos_restantes_final[-1] = pontos_restantes[i]
+            
+    # Inserindo o p0 na frente
+    pontos_restantes_final.insert(0, p0)
+    
+    return pontos_restantes_final
 
 def graham_scan(pontos):
     """
@@ -28,7 +44,27 @@ def graham_scan(pontos):
     # Se houver menos de 3 pontos, eles próprios já formam a envoltória
     if len(pontos) < 3:
         return pontos
+        
+    pontos = organizar_pontos(pontos)
     
+    # Após remover pontos na mesma reta, podemos ter ficado com menos de 3 pontos
+    if len(pontos) < 3:
+        return pontos
+
+    # 1. Inicializa a pilha com os três primeiros pontos
+    pilha = [pontos[0], pontos[1], pontos[2]]
+
+    # 2. Varredura com o resto dos pontos
+    for i in range(3, len(pontos)):
+        # Avaliamos o penúltimo da pilha (pilha[-2]), o último da pilha (pilha[-1]) e o ponto atual (pontos[i]).
+        # Queremos APENAS curvas para a esquerda (onde o produto vetorial é True/Positivo).
+        # Enquanto o produto vetorial for menor ou igual a zero (False), fazemos pop (desempilhamos)
+        while len(pilha) > 1 and not produto_vetorial(pilha[-2], pilha[-1], pontos[i]):
+            pilha.pop()
+            
+        # Adiciona o ponto atual na pilha
+        pilha.append(pontos[i])
+
     return pilha
 
 
