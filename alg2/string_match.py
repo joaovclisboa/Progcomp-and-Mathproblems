@@ -8,12 +8,13 @@ def naive_string_matcher(padrao, texto):
     n = len(texto)
     m = len(padrao)
     ocorrencias = []
-    for i in range(n-m+1):
-        for j in range(m):
-                if (padrao[j] == texto[i+j]):
+    for i in range(n-m+1): #vai do tamanho de 1 ate tamanho do texto - tamanho do padrao + 1 pra na ultima iteração o i estar exatamente no inicio da ultima casa que o padrao pode
+        for j in range(m): #passamos por todos elementos do padrão
+                if (padrao[j] == texto[i+j]): #se o padrao na posição j é igual ao texto na posicao i + j, ou seja, o caractere bateu
+                     if (j == m-1): #se estamos no ultimo elemento do padrao e ele bateu
+                          ocorrencias.append(i) #adicionamos na ocorrencia onde ele iniciou
                      continue
-                else:
-
+                break
     return ocorrencias
 
 # ==========================================================
@@ -113,7 +114,7 @@ def main():
     texto = "ababbabbabbababbabb"
     padrao = "abb"
     
-    print("Teste Prefix Function (KMP) em 'ababbabb':", prefixFunc("ababbabb"))
+    #print("Teste Prefix Function (KMP) em 'ababbabb':", prefixFunc("ababbabb"))
     print("Naive String Matcher:", naive_string_matcher(padrao, texto))
 
 
