@@ -25,6 +25,7 @@ def rabin_karp(padrao, texto, d=256, q=101) -> list[int]:
     d: número de caracteres no alfabeto
     q: um número primo para calcular o hash
     """
+
     ocorrencias = []
     # a implementar
     return ocorrencias
@@ -33,14 +34,45 @@ def rabin_karp(padrao, texto, d=256, q=101) -> list[int]:
 # 3. AUTÔMATO FINITO (FASA)
 # ==========================================================
 def compute_transition_function(padrao) -> dict:
-     # a implementar
-     pass
+    m = len(padrao)
+    trans = {}
+    
+    # Calculamos as transições para cada estado possível: 0, 1, ..., m
+    for q in range(m + 1):
+        trans[q] = {}
+        for c in string.ascii_lowercase:
+            # O próximo estado pode ser no máximo o estado atual + 1
+            k = min(m, q + 1)
+            
+            # String formada pelo que já casou (padrao[:q]) + o novo caractere lido (c)
+            texto_atual = padrao[:q] + c
+            
+            # Queremos o maior k tal que padrao[:k] seja SUFIXO de texto_atual
+            while k > 0 and padrao[:k] != texto_atual[-k:]:
+                k -= 1
+            
+            trans[q][c] = k
+            
+    return trans
 
 def FASA(padrao, texto) -> list[int]: 
-     """Finite Automaton String-Matching Algorithm"""
-     ocorrencias = []
-     # a implementar
-     return ocorrencias
+    """Finite Automaton String-Matching Algorithm"""
+    ocorrencias = []
+    m = len(padrao)
+    if m == 0:
+        return ocorrencias
+        
+    trans = compute_transition_function(padrao)
+    q = 0 # estado inicial
+    
+    for i, c in enumerate(texto):
+        # Avança o estado de acordo com a função de transição (se caractere estranho, volta ao estado 0)
+        q = trans[q].get(c, 0)
+        if q == m:
+            # Encontrou o padrão
+            ocorrencias.append(i - m + 1)
+            
+    return ocorrencias
 
 # ==========================================================
 # 4. KNUTH-MORRIS-PRATT (KMP)
