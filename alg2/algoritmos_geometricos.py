@@ -73,9 +73,9 @@ def graham_scan(pontos: list[Ponto]) -> list[Ponto]:
     Encontra o fecho convexo de um conjunto de pontos usando o Algoritmo de Graham.
     Complexidade: O(n log n)
     """
-    pontos.sort(key=lambda p: (p.y, p.x))
-    p0 = pontos[0]
-    pontos = pontos[1:]
+
+    p0 = min(pontos, key = lambda p: (p.y, p.x))
+    pontos.remove(p0)
     # Ordenar por ângulo polar usando math.atan2(dy, dx)
     # math.atan2 retorna o ângulo em radianos entre o vetor (dx, dy) e o eixo X positivo
     # Se os ângulos forem iguais (colineares), o critério de desempate comum é a distância
@@ -95,8 +95,22 @@ def jarvis_march(pontos: list[Ponto]) -> list[Ponto]:
     Encontra o fecho convexo usando a Marcha de Jarvis (Mapeamento de Embrulho/Gift Wrapping).
     Complexidade: O(n * h), onde h é o número de pontos no fecho.
     """
+
+    p0 = min(pontos, key = lambda p: (p.y. p.x))
     fecho = []
-    # a implementar
+    p_atual = p0
+    n = len(pontos)
+    while True:
+        fecho.append(p_atual)
+        indice_atual = pontos.index(p_atual)
+        proximo_ponto = pontos[(indice_atual + 1)%n]
+        for q in pontos:
+            if orientacao(p_atual, proximo_ponto, q) == 2:
+                proximo_ponto = q
+        p_atual = proximo_ponto
+
+        if p_atual == p0:
+            break
     return fecho
 
 # ==========================================================
